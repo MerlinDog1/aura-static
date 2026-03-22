@@ -1,0 +1,220 @@
+const metrics = [
+  { label: 'Signal latency', value: '4.8ms' },
+  { label: 'Inference updates', value: '38k/s' },
+  { label: 'Venue coverage', value: '42 markets' },
+]
+
+const pulseBars = [52, 68, 44, 82, 58, 91, 63, 76, 48, 88, 60, 72, 54, 95, 66, 84]
+
+const edgeItems = [
+  {
+    title: 'See microstructure before it prints',
+    body:
+      'Aura fuses order-book imbalance, flow toxicity, and venue fragmentation into a single predictive layer that updates in real time.',
+  },
+  {
+    title: 'Decide inside the spread',
+    body:
+      'Execution teams get forward-looking context instead of delayed dashboards, so entries, exits, and hedges move with confidence.',
+  },
+  {
+    title: 'Stay composed under market velocity',
+    body:
+      'Signal quality, risk posture, and model confidence remain readable under pressure, even when every millisecond matters.',
+  },
+]
+
+const partners = [
+  'CME Group',
+  'LSEG',
+  'Cboe',
+  'ICE',
+  'Nasdaq',
+  'TradingView',
+  'AWS',
+  'Redis',
+]
+
+function Wordmark({ name }: { name: string }) {
+  return <span className="wordmark">{name}</span>
+}
+
+function SignalIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="edge-icon" aria-hidden="true">
+      <path d="M3 14.5h4l2.1-5 3.1 9 2.4-6H21" />
+    </svg>
+  )
+}
+
+function RadarIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="edge-icon" aria-hidden="true">
+      <path d="M12 12l6.8-6.8" />
+      <path d="M12 5.5a6.5 6.5 0 1 1-6.5 6.5" />
+      <path d="M12 2.5a9.5 9.5 0 1 1-9.5 9.5" />
+    </svg>
+  )
+}
+
+function ShieldIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="edge-icon" aria-hidden="true">
+      <path d="M12 3l6.5 2.5v5.8c0 4.4-2.6 7.5-6.5 9.7-3.9-2.2-6.5-5.3-6.5-9.7V5.5z" />
+      <path d="M9.2 12.2l1.9 1.9 3.9-4.2" />
+    </svg>
+  )
+}
+
+function App() {
+  return (
+    <div className="page-shell">
+      <header className="topbar" aria-label="Primary">
+        <a className="brand" href="#hero" aria-label="Aura home">
+          <span className="brand-mark" aria-hidden="true" />
+          <span className="brand-name">AURA</span>
+        </a>
+        <nav className="nav-links">
+          <a href="#pulse">Pulse</a>
+          <a href="#edge">Edge</a>
+          <a href="#proof">Proof</a>
+        </nav>
+      </header>
+
+      <main>
+        <section id="hero" className="hero-section">
+          <div className="hero-copy">
+            <p className="eyebrow reveal reveal-1">Real-time predictive analytics for high-frequency traders</p>
+            <h1 className="hero-title reveal reveal-2">Predict the invisible. Trade the future.</h1>
+            <p className="hero-text reveal reveal-3">
+              Aura turns fragmented market activity into a continuous predictive surface — so trading teams can read pressure,
+              momentum, and intent before the tape makes it obvious.
+            </p>
+            <div className="hero-actions reveal reveal-4">
+              <a className="primary-cta" href="#jump">Request a live demo</a>
+              <a className="secondary-link" href="#pulse">See the pulse</a>
+            </div>
+            <dl className="metrics-grid reveal reveal-4">
+              {metrics.map((item) => (
+                <div key={item.label}>
+                  <dt>{item.label}</dt>
+                  <dd>{item.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+
+          <div className="hero-visual" aria-label="Illustration of live predictive market activity">
+            <div className="visual-glow" />
+            <div className="visual-grid" />
+            <div className="visual-panel glass">
+              <div className="panel-head">
+                <span>Predictive Flow Engine</span>
+                <span className="status-dot">LIVE</span>
+              </div>
+              <div className="chart-area">
+                <svg viewBox="0 0 640 260" className="chart-svg" role="img" aria-label="Animated signal curve">
+                  <defs>
+                    <linearGradient id="lineGlow" x1="0" x2="1">
+                      <stop offset="0%" stopColor="rgba(180,255,104,0.1)" />
+                      <stop offset="50%" stopColor="rgba(180,255,104,0.95)" />
+                      <stop offset="100%" stopColor="rgba(86,255,184,0.5)" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M0 160 C40 140, 80 120, 120 126 S200 170, 240 122 S320 54, 360 90 S440 202, 480 152 S560 82, 640 96" />
+                  <path className="chart-line" d="M0 160 C40 140, 80 120, 120 126 S200 170, 240 122 S320 54, 360 90 S440 202, 480 152 S560 82, 640 96" />
+                </svg>
+                <div className="signal-tag tag-a">Liquidity vacuum detected</div>
+                <div className="signal-tag tag-b">Buy pressure building</div>
+                <div className="signal-tag tag-c">Confidence 97.2%</div>
+              </div>
+              <div className="ladder">
+                {pulseBars.map((value, index) => (
+                  <div className="ladder-row" key={index}>
+                    <span className="ladder-price">{(4632.25 + index * 0.25).toFixed(2)}</span>
+                    <span className="ladder-bar-wrap">
+                      <span className="ladder-bar" style={{ width: `${value}%` }} />
+                    </span>
+                    <span className="ladder-value">{(value * 112).toLocaleString()}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="pulse" className="content-section pulse-section">
+          <div className="section-label">The Pulse</div>
+          <div className="section-grid">
+            <div>
+              <h2>Live-stream signal architecture designed to stay legible at trading speed.</h2>
+            </div>
+            <div>
+              <p>
+                Every stream in Aura is prioritized for human decision-making: regime shifts, liquidity stress, directional conviction,
+                and model confidence are surfaced instantly — with no dependency on decorative imagery.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="edge" className="content-section edge-section">
+          <div className="section-label">The Edge</div>
+          <div className="edge-list">
+            <article>
+              <SignalIcon />
+              <h3>{edgeItems[0].title}</h3>
+              <p>{edgeItems[0].body}</p>
+            </article>
+            <article>
+              <RadarIcon />
+              <h3>{edgeItems[1].title}</h3>
+              <p>{edgeItems[1].body}</p>
+            </article>
+            <article>
+              <ShieldIcon />
+              <h3>{edgeItems[2].title}</h3>
+              <p>{edgeItems[2].body}</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="proof" className="content-section proof-section">
+          <div className="section-label">The Proof</div>
+          <div className="proof-grid">
+            <div>
+              <h2>Built for desks that care about latency, reliability, and market structure.</h2>
+              <p>
+                Aura integrates cleanly into execution workflows, quantitative research environments, and real-time monitoring stacks.
+                The platform is designed to complement professional infrastructure, not fight it.
+              </p>
+            </div>
+            <div className="logo-cloud" aria-label="Partner ecosystem">
+              {partners.map((partner) => (
+                <Wordmark key={partner} name={partner} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="jump" className="jump-section">
+          <p className="section-label">The Jump</p>
+          <div className="jump-layout">
+            <div>
+              <h2>Bring Aura onto the desk.</h2>
+              <p>
+                See a live walkthrough of predictive signals, market flow overlays, and deployment options tailored to your trading stack.
+              </p>
+            </div>
+            <a className="jump-cta" href="mailto:hello@aura-analytics.ai?subject=Aura%20Live%20Demo">
+              <span>Book the live session</span>
+              <span className="jump-arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </section>
+      </main>
+    </div>
+  )
+}
+
+export default App
